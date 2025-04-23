@@ -58,8 +58,7 @@ def generate_noise_like_model(model, amps):
     noise = {}
     for key in amps:
         amp = amps[key]
-        block = getattr(model.prev, key) if
-         hasattr(model.prev, key) else model.curr  # fallback
+        block = getattr(model.prev, key) if hasattr(model.prev, key) else model.curr  # fallback
         shape = block.features[0].conv.weight.shape  # shape: (out_channels, in_channels, kH, kW)
         out_channels = shape[0]
         H = W = 25  # 🔧 default small size, adjust if needed
