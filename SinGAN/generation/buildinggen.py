@@ -4,15 +4,19 @@ import torch
 import torchvision.transforms as transforms
 from PIL import Image
 import re
-
+import os
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 # === Set paths ===
 this_dir = os.path.dirname(__file__)
 generation_path = os.path.abspath(os.path.join(this_dir))
 sys.path.append(generation_path)
 
+
+
 from models.generators import g_multivanilla
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 
 model_dir = os.path.abspath(os.path.join(this_dir, "../../2025-04-18_03-58-38"))
 input_image_path = os.path.abspath(os.path.join(this_dir, "../images/colusseum.png"))
